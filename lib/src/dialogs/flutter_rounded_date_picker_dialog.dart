@@ -28,6 +28,7 @@ class FlutterRoundedDatePickerDialog extends StatefulWidget {
       this.textNegativeButton,
       this.textPositiveButton,
       this.textActionButton,
+      this.customWidget,
       this.onTapActionButton,
       this.styleDatePicker,
       this.styleYearPicker,
@@ -66,6 +67,9 @@ class FlutterRoundedDatePickerDialog extends StatefulWidget {
   final String? textActionButton;
 
   final VoidCallback? onTapActionButton;
+
+  /// Custom widgets
+  final Widget? customWidget;
 
   /// Style
   final MaterialRoundedDatePickerStyle? styleDatePicker;
@@ -268,7 +272,12 @@ class _FlutterRoundedDatePickerDialogState extends State<FlutterRoundedDatePicke
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        Flexible(child: picker),
+                        Expanded(
+                          child: picker,
+                        ),
+                        if (widget.customWidget != null) ...[
+                          widget.customWidget!,
+                        ],
                         actions,
                       ],
                     ),
@@ -288,13 +297,22 @@ class _FlutterRoundedDatePickerDialogState extends State<FlutterRoundedDatePicke
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   header,
-                  if (widget.height == null)
-                    Flexible(child: picker)
-                  else
+                  if (widget.height == null) ...[
+                    Expanded(
+                        child: picker,
+                    ),
+                    if (widget.customWidget != null) ...[
+                      widget.customWidget!,
+                    ],
+                  ] else ...[
                     SizedBox(
                       height: widget.height,
                       child: picker,
                     ),
+                    if (widget.customWidget != null) ...[
+                      widget.customWidget!,
+                    ],
+                  ],
                   actions,
                 ],
               ),

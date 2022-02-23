@@ -392,6 +392,25 @@ class _HomeState extends State<Home> {
                   onPressed: () async {
                     DateTime newDateTime = await showRoundedDatePicker(
                       context: context,
+                      height: MediaQuery.of(context).size.height * 0.375,
+                      customWidget: Container(
+                        color: Colors.red,
+                        child: Text(
+                          'This is a custom widget!',
+                        ),
+                      ),
+                    );
+                    if (newDateTime != null) {
+                      setState(() => dateTime = newDateTime);
+                    }
+                  },
+                  label: const Text("Rounded Calendar and Custom Widgets"),
+                ),
+                const SizedBox(height: 12),
+                FloatingActionButton.extended(
+                  onPressed: () async {
+                    DateTime newDateTime = await showRoundedDatePicker(
+                      context: context,
                       textNegativeButton: "CUSTOM CANCEL",
                       textPositiveButton: "CUSTOM OK",
                       textActionButton: "TODAY",
