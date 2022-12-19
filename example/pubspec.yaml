@@ -15,6 +15,12 @@ dependencies:
   flutter_rounded_date_picker:
     path: ../
 
+dev_dependencies:
+  # Testing
+  test: any
+  flutter_test:
+    sdk: flutter
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

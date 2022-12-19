@@ -7,3 +7,5 @@
 build/
 pubspec.lock
 .idea/
+.fvm/flutter_sdk
+/android/local.properties

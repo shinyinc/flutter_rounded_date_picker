@@ -6,7 +6,8 @@ class FlutterRoundedButtonAction extends StatelessWidget {
   final String? textActionButton;
   final VoidCallback? onTapButtonNegative; // Default is "Cancel" button.
   final VoidCallback? onTapButtonPositive; // Default is "OK" button.
-  final VoidCallback? onTapButtonAction; // Default is "Action" button which will be on the left.
+  final VoidCallback?
+      onTapButtonAction; // Default is "Action" button which will be on the left.
   final TextStyle? textStyleButtonAction;
   final TextStyle? textStyleButtonPositive;
   final TextStyle? textStyleButtonNegative;
@@ -33,7 +34,7 @@ class FlutterRoundedButtonAction extends StatelessWidget {
       : super(key: key);
 
   List<Widget> _buildActionsButton() {
-    final Widget negativeButton = FlatButton(
+    final Widget negativeButton = TextButton(
       child: Text(
         textButtonNegative ?? localizations.cancelButtonLabel,
         style: textStyleButtonNegative,
@@ -41,7 +42,7 @@ class FlutterRoundedButtonAction extends StatelessWidget {
       onPressed: onTapButtonNegative,
     );
 
-    final Widget positiveButton = FlatButton(
+    final Widget positiveButton = TextButton(
       child: Text(
         textButtonPositive ?? localizations.okButtonLabel,
         style: textStyleButtonPositive,
@@ -50,7 +51,7 @@ class FlutterRoundedButtonAction extends StatelessWidget {
     );
 
     if (textActionButton != null) {
-      final Widget leftButton = FlatButton(
+      final Widget leftButton = TextButton(
         child: Text(textActionButton!, style: textStyleButtonAction),
         onPressed: onTapButtonAction,
       );
